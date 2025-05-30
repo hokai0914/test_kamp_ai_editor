@@ -19,6 +19,10 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import AudiotrackIcon from '@mui/icons-material/Audiotrack';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
 
 const mockSentences = [
   '이것은 첫 번째 임의의 문장입니다.',
@@ -71,6 +75,7 @@ const GeneratePage: React.FC = () => {
   const [menuIdx, setMenuIdx] = useState<number | null>(null);
   const [audioLoading, setAudioLoading] = useState(false);
   const [audioMsg, setAudioMsg] = useState('');
+  const [transitionDialogOpen, setTransitionDialogOpen] = useState(false);
 
   const handleCheck = (idx: number) => {
     setChecked(prev => prev.map((v, i) => (i === idx ? !v : v)));
@@ -134,6 +139,14 @@ const GeneratePage: React.FC = () => {
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
+  };
+
+  const handleTransitionClick = () => {
+    setTransitionDialogOpen(true);
+  };
+
+  const handleTransitionDialogClose = () => {
+    setTransitionDialogOpen(false);
   };
 
   return (
@@ -253,7 +266,11 @@ const GeneratePage: React.FC = () => {
                 </Paper>
                 {/* 아이템 사이에 전환(arrow) 버튼 */}
                 {idx < timeline.length - 1 && (
-                  <Button size="small" sx={{ minWidth: 0, p: 0, alignSelf: 'center', bgcolor: neonBlue, borderRadius: '50%' }}>
+                  <Button 
+                    size="small" 
+                    sx={{ minWidth: 0, p: 0, alignSelf: 'center', bgcolor: neonBlue, borderRadius: '50%' }}
+                    onClick={handleTransitionClick}
+                  >
                     <ArrowForwardIosIcon fontSize="small" sx={{ color: '#111' }} />
                   </Button>
                 )}
@@ -284,6 +301,45 @@ const GeneratePage: React.FC = () => {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             ContentProps={{ sx: { bgcolor: '#232526', color: neonBlue, fontWeight: 700 } }}
           />
+          
+          {/* 전환 효과 Dialog */}
+          <Dialog
+            open={transitionDialogOpen}
+            onClose={handleTransitionDialogClose}
+            PaperProps={{
+              sx: {
+                bgcolor: '#232526',
+                color: darkText,
+                borderRadius: 3,
+                minWidth: 400,
+                maxWidth: 500,
+              }
+            }}
+          >
+            <DialogTitle sx={{ color: neonBlue, fontWeight: 700, textAlign: 'center' }}>
+              전환 효과
+            </DialogTitle>
+            <DialogContent>
+              <Typography sx={{ color: darkText, textAlign: 'center', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                전환 효과를 생성/편집할 수 있습니다
+              </Typography>
+            </DialogContent>
+            <DialogActions sx={{ justifyContent: 'center', pb: 3 }}>
+              <Button
+                onClick={handleTransitionDialogClose}
+                variant="contained"
+                sx={{
+                  background: darkButton,
+                  color: darkText,
+                  fontWeight: 700,
+                  px: 4,
+                  '&:hover': { background: neonBlue, color: '#111' },
+                }}
+              >
+                확인
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Paper>
       </Box>
     </Box>

@@ -16,7 +16,6 @@ const menuItems = [
 const darkBg = '#111';
 const neonBlue = '#00eaff';
 const neonPink = '#ff4ecd';
-const darkPaper = 'linear-gradient(135deg, #232526 0%, #414345 100%)';
 const darkButton = `linear-gradient(90deg, ${neonPink} 0%, ${neonBlue} 100%)`;
 const darkText = '#fff';
 const darkSubText = '#b0b0b0';
@@ -43,7 +42,7 @@ const InputPage: React.FC = () => {
     }
   };
 
-  const handleDialogClose = (skip = false) => {
+  const handleDialogClose = () => {
     setDialogOpen(false);
     setSnackbarMsg('요청 사항을 분석 중입니다...');
     setSnackbarOpen(true);
@@ -110,8 +109,8 @@ const InputPage: React.FC = () => {
           <Typography sx={{ color: darkSubText }}>원하는 설정을 선택하거나 건너뛸 수 있습니다.</Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleDialogClose(false)} sx={{ background: darkButton, color: darkText, fontWeight: 700, '&:hover': { background: neonBlue, color: '#111' } }}>OK</Button>
-          <Button onClick={() => handleDialogClose(true)} sx={{ color: neonPink, fontWeight: 700 }}>SKIP</Button>
+          <Button onClick={() => handleDialogClose()} sx={{ background: darkButton, color: darkText, fontWeight: 700, '&:hover': { background: neonBlue, color: '#111' } }}>OK</Button>
+          <Button onClick={() => handleDialogClose()} sx={{ color: neonPink, fontWeight: 700 }}>SKIP</Button>
         </DialogActions>
       </Dialog>
       <Snackbar

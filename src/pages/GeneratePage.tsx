@@ -1,11 +1,9 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useLocation } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -58,22 +56,17 @@ const mockTimeline = [
 const darkBg = '#111';
 const neonBlue = '#00eaff';
 const neonPink = '#ff4ecd';
-const darkPaper = 'linear-gradient(135deg, #232526 0%, #414345 100%)';
-const darkAccent = neonBlue;
 const darkButton = `linear-gradient(90deg, ${neonPink} 0%, ${neonBlue} 100%)`;
 const darkText = '#fff';
-const darkSubText = '#b0b0b0';
 
 const GeneratePage: React.FC = () => {
-  const location = useLocation();
-  const prompt = location.state?.prompt || '';
   const [checked, setChecked] = useState<boolean[]>([true, true, true, true, true, false, false]);
   const [timeline, setTimeline] = useState(mockTimeline);
   const [loadingIdx, setLoadingIdx] = useState<number | null>(null);
   const [videoLoading, setVideoLoading] = useState(false);
   const [videoMessage, setVideoMessage] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMsg, setSnackbarMsg] = useState('');
+  const [snackbarMsg] = useState('');
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [menuIdx, setMenuIdx] = useState<number | null>(null);
   const [audioLoading, setAudioLoading] = useState(false);

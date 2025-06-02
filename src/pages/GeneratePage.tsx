@@ -169,7 +169,7 @@ const GeneratePage: React.FC = () => {
       >
         <Paper elevation={0} sx={{ p: 3, bgcolor: 'transparent', boxShadow: 'none', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'stretch', justifyContent: 'flex-start' }}>
           <Typography variant="h6" fontWeight={700} mb={2} sx={{ color: neonBlue }}>
-            문장 선택
+            소스 선택
           </Typography>
           <Box display="flex" flexDirection="column" gap={1} alignItems="stretch">
             {mockSentences.map((sentence, idx) => (

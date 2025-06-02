@@ -215,7 +215,7 @@ const GeneratePage: React.FC = () => {
               </Box>
             ) : (
               <>
-                <ReactPlayer url="https://www.w3schools.com/html/mov_bbb.mp4" width="100%" height={720} controls style={{ background: '#000', borderRadius: 8 }} />
+                <ReactPlayer url="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4" width="100%" height={720} controls style={{ background: '#000', borderRadius: 8 }} />
                 <Button variant="contained" sx={{ mt: 2, background: darkButton, color: darkText, fontWeight: 700, '&:hover': { background: neonBlue, color: '#111' } }} onClick={handleVideoGenerate} fullWidth startIcon={<VideoLibraryIcon />}>
                   영상 생성하기
                 </Button>
